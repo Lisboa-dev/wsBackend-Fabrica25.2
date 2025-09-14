@@ -23,5 +23,4 @@ urlpatterns = [
     path('books/', include('apps.livros.urls')),
     path('collection/', include('apps.clusters.urls')),
     path('user/', include('apps.user.urls')),
-    path('interface/', include('apps.interface_grafic.urls')),
 ]
