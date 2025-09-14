@@ -35,7 +35,7 @@ git clone https://github.com/Lisboa-dev/wsBackend-Fabrica25.2.git
 
 <h3>Config .env variables</h2>
 
-existe um arquivo env.py dentro do projeto, configure as infornações do seu banco nele
+insira um arquivo env.py dentro do libary-project, configure as infornações do seu banco nele. se baseie no env.exemple, mas ponha dentro do library-project
 
 <h3>iniciar o projeto</h3>
 
