@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'apps.livros',
     'apps.clusters',
     'apps.user',
-    'apps.interface_grafic',
     'rest_framework',
 ]
 
