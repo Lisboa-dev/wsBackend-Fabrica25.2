@@ -45,6 +45,7 @@ How to start your project
 rode sua venv com: py venv <venvNamed>
 active:  venvNamed/Scrips/activate
 para consumir dependencias em reqquirements: pip install -r requirements.txt
+pip install rest_framework_simplejwt
 depois vá para a pasta que contem o manage.py
 rode py manage.py makemigrations
 rode py manage.py migrate
@@ -105,4 +106,5 @@ bem, agora ja deve estar rodando
  "pasxword":"your pass")
 }
 ```
+
 
