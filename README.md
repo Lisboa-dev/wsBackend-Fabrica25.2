@@ -65,12 +65,10 @@ bem, agora ja deve estar rodando
 | <kbd>user/token/refresh</kbd>      |   [request details](#pos / user/token)
 | <kbd>books/GET/ </kbd>             |   [request details](#post-auth-detail)
 | <kbd>books/Post/ </kbd>            |   [request details](#post-auth-detail)
-| <kbd>bookd/Delete/<int:id> </kbd>  |   [request details](#post-auth-detail)
+| <kbd>books/Delete/<int:id>/ </kbd>  |   [request details](#post-auth-detail)
 | <kbd> collection/clusters </kbd>   |   [request details](#post-auth-detail)
-| <kbd> collection/Get  </kbd>       |   [request details](#post-auth-detail)
-| <kbd> / </kbd>                     |   [request details](#post-auth-detail)
-| <kbd> / </kbd>                     |   [request details](#post-auth-detail)
-| <kbd> / </kbd>                     |   [request details](#post-auth-detail)
+| <kbd> collection/Get/int id  </kbd>       |   [request details](#post-auth-detail)
+
 
 
 <h3 id="get-auth-detail"> post /user/Post/</h3>
@@ -83,15 +81,16 @@ bem, agora ja deve estar rodando
 }
 ```
 **REQUEST**
+```json
 {
 "username":"nome",
 "email":"seu emails" opcional,
 "password":"seu Password"
 }
+```
+<h3 id="post-auth-detail">post /user/token/</h3>
 
-<h3 id="post-auth-detail">post /user/tokrn/</h3>
-
-**resposne**
+**RESPONSE**
 ```json
 {
 "refresh":"refrash-token"
@@ -106,5 +105,175 @@ bem, agora ja deve estar rodando
  "pasxword":"your pass")
 }
 ```
+
+
+<h3 id="post-auth-detail">get books/GET/</h3>
+
+**RESPONSE**
+```json
+{
+{
+ {
+	"data": [
+		{
+			"title": "Saber não saber",
+			"author": "Alcides Buss",
+			"genres": "Indefinido",
+			"date_publi": 2009,
+			"number_pages": 141,
+			"publisher": "Caminho de Dentro Edições",
+			"language": "por",
+			"urls": "https://openlibrary.org/works/OL15573019W",
+			"image_url": null,
+			"availability": "Indefinido",
+			"format": "Indefinido"
+		},
+		{
+			"title": "Saber Ser, Saber Estar (Spanish Edition)",
+			"author": "Monste Soler, Montse Soler",
+			"genres": "Indefinido",
+			"date_publi": 1999,
+			"number_pages": null,
+			"publisher": "Planeta Pub Corp",
+			"language": "Indefinido",
+			"urls": "https://openlibrary.org/works/OL33703897W",
+			"image_url": null,
+			"availability": "Indefinido",
+			"format": "Indefinido"
+		},
+		
+
+	]
+}
+}
+```
+
+**REQUEST**
+```
+GET http//localhost:Port/books/Get/?q=saber&limit=2&page=5
+```
+
+<h3 id="post-auth-detail">Post books/Post/</h3>
+
+<h2>Atenção</h2>
+
+Para efetuar requisições Pust, o individuo devera ter no header os seguntes paametros : tag: *Authorization*  com valor *Bearer <token>*
+
+Você deverá ter ao menos um cluster para vincular
+
+**REQUEST**
+```jason
+
+{
+	  "title": "Saber não saber",
+			"author": "Alcides Buss",
+			"genres": "Indefinido",
+			"date_publi": 2009,
+			"number_pages": 141,
+			"publisher": "Caminho de Dentro Edições",
+			"language": "por",
+			"urls": "https://openlibrary.org/works/OL15573019W",
+			"image_url": null,
+			"availability": "Indefinido",
+			"format": "Indefinido",
+   "cluster"> cluster_id
+}
+```
+
+**RESPONSE**
+```jason
+{
+   Data:{
+      "title": "Saber não saber",
+   			"author": "Alcides Buss",
+   			"genres": "Indefinido",
+   			"date_publi": 2009,
+   			"number_pages": 141,
+   			"publisher": "Caminho de Dentro Edições",
+   			"language": "por",
+   			"urls": "https://openlibrary.org/works/OL15573019W",
+   			"image_url": null,
+   			"availability": "Indefinido",
+   			"format": "Indefinido",
+      "cluster"> cluster_id
+   }
+
+}
+```
+
+
+<h3 id="post-auth-detail">post books/Delete/<int:id>/</h3>
+ 
+<h2>Atenção</h2>
+Para efetuar requisições Delete, o individuo devera ter no header os seguintes parametros : tag: *Authorization*  com valor *Bearer <token>*
+
+**REQUEST**
+Delete books/Delete/1/
+
+**RESPONSE**
+```json
+  {'data':'Book 1 deletado com sucesso'}
+```
+
+<h3 id="post-auth-detail">all /collection/cluster/</h3>
+Para efetuar requisições o individuo devera ter no header os seguintes parametros : tag: *Authorization*  com valor *Bearer <token>*
+
+**REQUEST**
+
+pode ser feito em qualquer formato, segue o modelo generico do views set
+
+dados para requisição post: "name", "genres", "description"
+
+
+<h3 id="post-auth-detail">GET /collection/Get/id/</h3>
+Para efetuar requisições o individuo devera ter no header os seguintes parametros : tag: *Authorization*  com valor *Bearer <token>*
+
+**REQUEST**
+   GET http//localhost:Port/collection/Get/id/
+**RESPONSE**
+```json
+   {data : [
+       		{
+			"title": "Saber não saber",
+			"author": "Alcides Buss",
+			"genres": "Indefinido",
+			"date_publi": 2009,
+			"number_pages": 141,
+			"publisher": "Caminho de Dentro Edições",
+			"language": "por",
+			"urls": "https://openlibrary.org/works/OL15573019W",
+			"image_url": null,
+			"availability": "Indefinido",
+			"format": "Indefinido"
+   "cluster":"1"
+		},
+		{
+			"title": "Saber Ser, Saber Estar (Spanish Edition)",
+			"author": "Monste Soler, Montse Soler",
+			"genres": "Indefinido",
+			"date_publi": 1999,
+			"number_pages": null,
+			"publisher": "Planeta Pub Corp",
+			"language": "Indefinido",
+			"urls": "https://openlibrary.org/works/OL33703897W",
+			"image_url": null,
+			"availability": "Indefinido",
+			"format": "Indefinido"
+    "cluster":"3"
+		},
+		
+]}
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
